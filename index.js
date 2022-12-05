@@ -19,3 +19,15 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+
+// file storage
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, "public/assets");
+  },
+  filename: (_req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage });
