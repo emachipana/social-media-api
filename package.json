@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/emachipana/social-media-api/issues"
   },
-  "homepage": "https://github.com/emachipana/social-media-api#readme"
+  "homepage": "https://github.com/emachipana/social-media-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
