@@ -14,8 +14,6 @@ export const register = async (req, res) => {
       occupation
     } = req.body;
 
-    const { originalname: picturePath } = req.file;
-
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
@@ -24,7 +22,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
-      picturePath: picturePath || "default_picture.jpg",
+      picturePath: req.file?.originalname || "default_picture.jpg",
       location,
       occupation,
       viewedProfile: Math.floor(Math.random() * 1000),
