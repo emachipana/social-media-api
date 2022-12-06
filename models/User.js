@@ -43,5 +43,15 @@ const UserSchema = new Schema(
   }
 );
 
+// delete fields on convert to json
+UserSchema.set("toJSON", {
+  transform: (_doc, returnedObject) => {
+    returnedObject.id = returnedObject._id,
+    delete returnedObject.password;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  }
+})
+
 const User = model("User", UserSchema);
 export default User;
