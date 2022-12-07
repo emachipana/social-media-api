@@ -26,6 +26,23 @@ export const createPost = async (req, res) => {
   }
 }
 
+export const commentPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { content } = req.body;
+    const post = await Post.findById(id);
+    if(!post) return res.status(404).json({ message: "Post not found" });
+
+    if(!content) return res.status(422).json({ message: "Content of comment is required" });
+    post.comments.push(content);
+    await post.save();
+
+    res.status(201).json(post);
+  }catch(err) {
+    res.status(422).json({ error: err.message });
+  }
+}
+
 // GET || READ
 export const getFeedPosts = async (_req, res) => {
   try {
