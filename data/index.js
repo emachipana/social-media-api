@@ -46,6 +46,7 @@ export const posts = [
   {
     _id: ids[2],
     userId: ids[0],
+    userName: "John Doe",
     description: "Some really long random description",
     likes: new Map([
       [ids[1], true]
@@ -63,6 +64,7 @@ export const posts = [
   {
     _id: ids[3],
     userId: ids[1],
+    userName: "Jane Doe",
     description: "Another really long random description. This one is longer than the previous one.",
     likes: new Map([
       [ids[0], true]
