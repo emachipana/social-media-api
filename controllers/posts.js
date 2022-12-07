@@ -34,7 +34,16 @@ export const getFeedPosts = async (_req, res) => {
   }catch(err) {
     res.status(500).json({ error: err.message });
   }
-};
+}
 
-// export const getUserPosts = () => "";
+export const getUserPosts = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const posts = await Post.find({ userId });
+    res.json(posts);
+  }catch(err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
 // export const likePost = () => "";
