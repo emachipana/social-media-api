@@ -51,7 +51,7 @@ UserSchema.set("toJSON", {
     delete returnedObject._id;
     delete returnedObject.__v;
   }
-})
+});
 
 const User = model("User", UserSchema);
 export default User;
