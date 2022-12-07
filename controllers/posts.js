@@ -24,8 +24,17 @@ export const createPost = async (req, res) => {
   }catch(err) {
     res.status(422).json({ error: err.message });
   }
+}
+
+// GET || READ
+export const getFeedPosts = async (_req, res) => {
+  try {
+    const posts = await Post.find();
+    res.json(posts);
+  }catch(err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
-// export const getFeedPosts = () => "";
 // export const getUserPosts = () => "";
 // export const likePost = () => "";
