@@ -32,6 +32,15 @@ const PostSchema = new Schema(
   }
 );
 
+// delete fields on convert to json
+PostSchema.set("toJSON", {
+  transform: (_doc, returnedObject) => {
+    returnedObject.id = returnedObject._id,
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  }
+});
+
 const Post = model("Post", PostSchema);
 
 export default Post;
