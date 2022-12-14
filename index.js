@@ -13,6 +13,7 @@ import { verifyToken } from "./middleware/auth.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import { handleNotFound } from "./middleware/handleNotFound.js";
 // import User from "./models/User.js";
 // import Post from "./models/Post.js";
 // import { posts, users } from "./data/index.js";
@@ -50,6 +51,9 @@ app.post("/posts", [ verifyToken, upload.single("picture") ], createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+
+// handle endpoints not found
+app.use(handleNotFound);
 
 // mongoose setup
 const PORT = process.env.PORT || 3002;
