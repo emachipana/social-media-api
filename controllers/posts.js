@@ -46,7 +46,8 @@ export const commentPost = async (req, res) => {
 // GET || READ
 export const getFeedPosts = async (_req, res) => {
   try {
-    const posts = await Post.find();
+    let posts = await Post.find();
+    posts = posts.reverse();
 
     res.json(posts);
   }catch(err) {
@@ -57,7 +58,8 @@ export const getFeedPosts = async (_req, res) => {
 export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const posts = await Post.find({ userId });
+    let posts = await Post.find({ userId });
+    posts = posts.reverse();
 
     res.json(posts);
   }catch(err) {
